@@ -20,6 +20,24 @@ const createUser = (req, res) => {
         }
     });
 };
+
+const getUsers = (req, res) => {
+    userModel.find((err, data) => {
+        if (err){
+            res.status(404).json({
+                success: false,
+                message: err
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                message: data
+            });
+        }
+    });
+};
+
 module.exports = {
-    createUser
+    createUser,
+    getUsers
 }
